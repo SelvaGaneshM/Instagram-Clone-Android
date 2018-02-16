@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.joker.sistofoodtest.Adapter.ViewpagerAdapter;
 
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
-
+    private TextView notificationBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        notificationBar = (TextView) findViewById(R.id.notificationBar);
 
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(adapter);
@@ -48,14 +50,17 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                         switch (item.getItemId()) {
                             case R.id.navigation_home:
                                 viewPager.setCurrentItem(0);
+                                notificationBar.setText("Feeds");
                                 break;
 
                             case R.id.status:
                                 viewPager.setCurrentItem(1);
+                                notificationBar.setText("Status");
                                 break;
 
                             case R.id.user:
                                 viewPager.setCurrentItem(2);
+                                notificationBar.setText("Me");
                                 break;
                         }
                         return true;
