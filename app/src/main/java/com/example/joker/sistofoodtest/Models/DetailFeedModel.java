@@ -1,4 +1,4 @@
-package com.example.joker.sistofoodtest.DataSet;
+package com.example.joker.sistofoodtest.Models;
 
 /**
  * Created by joker on 16/2/18.

@@ -1,6 +1,5 @@
 package com.example.joker.sistofoodtest;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -9,15 +8,12 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.joker.sistofoodtest.DataSet.DetailFeedModel;
+import com.example.joker.sistofoodtest.Models.DetailFeedModel;
 import com.example.joker.sistofoodtest.DataSet.FeedData;
-import com.example.joker.sistofoodtest.Models.FeedModels;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class FeedDetailActivity extends AppCompatActivity {

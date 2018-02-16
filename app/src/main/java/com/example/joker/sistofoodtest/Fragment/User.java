@@ -8,13 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.joker.sistofoodtest.Models.StatusModel;
 import com.example.joker.sistofoodtest.R;
+
+import java.util.ArrayList;
 
 /**
  * Created by joker on 15/2/18.
  */
 
 public class User extends Fragment {
+
+    private ArrayList<StatusModel> status = new ArrayList<>();
 
     public User() {
     }

@@ -13,16 +13,18 @@ import java.io.InputStream;
 public class FeedData {
 
 
-    public static String getJsonData(Context context,int i) {
+    public static String getJsonData(Context context, int i) {
 
         String file = null;
-        if(i==1){
+        if (i == 1) {
             file = "test.json";
-        }else if(i==2){
+        } else if (i == 2) {
             file = "detail.json";
+        } else if (i == 3) {
+            file = "status.json";
         }
 
-        Log.d("file ",file);
+        Log.d("file ", file);
 
 
         String json = null;

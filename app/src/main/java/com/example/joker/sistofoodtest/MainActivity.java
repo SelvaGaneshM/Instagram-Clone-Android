@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.joker.sistofoodtest.Adapter.ViewpagerAdapter;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     private ViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
     private TextView notificationBar;
+    private ImageView addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         notificationBar = (TextView) findViewById(R.id.notificationBar);
+        addBtn = (ImageView) findViewById(R.id.addBtn);
 
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(adapter);
@@ -84,5 +87,12 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         intent.putExtra("feedno",position);
         Log.d("Feed No Mainactivity ",""+position);
         startActivity(intent);
+    }
+
+    public void startCamera(View view) {
+
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivity(intent);
+
     }
 }
