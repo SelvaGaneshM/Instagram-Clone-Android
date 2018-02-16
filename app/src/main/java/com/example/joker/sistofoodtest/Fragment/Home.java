@@ -48,7 +48,7 @@ public class Home extends Fragment {
 
     private void init() {
 
-        String jsonData = FeedData.getJsonData(getContext());
+        String jsonData = FeedData.getJsonData(getContext(),1);
 
         try {
 

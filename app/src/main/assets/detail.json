@@ -1,0 +1,42 @@
+{
+  "status": "ok",
+  "detail": [
+    {
+      "title": "This Picture of a Single Atom Just Won a Science Photography Prize",
+      "description": "What you're seeing is a single positively charged strontium atom (also known as a strontium ion) suspended in electric fields radiating from the metal electrodes around it. To get a sense of just how small this image is, the distance between the two needle-like tips you see is about 2 millimeters — roughly the width of a spaghetti noodle.When ions like this are illuminated by the right color of blue-violet laser, they absorb the light particles and emit them right back. Nadlinger realized that if he set up his camera with a long enough exposure, he might be able to capture this fleeting moment of light emission in a digital image. He placed his tripod so the lens peered through the window of the ultra-high vacuum chamber that houses the ion trap, which in turn suspends the atom, and took his shot.The idea of being able to see a single atom with the naked eye had struck me as a wonderfully direct and visceral bridge between the miniscule quantum world and our macroscopic reality,he said in a press release. A back-of-the-envelope calculation showed the numbers to be on my side, and when I set off to the lab with camera and tripods one quiet Sunday afternoon, I was rewarded with this particular picture of a small, pale blue dot.",
+      "tag": "Science & Technology"
+    },
+
+    {
+      "title": "Saturn's Moon Titan Is Covered in Electrified Sand",
+      "description": "So what's happening here? Basically, as the wind on the moon kicks up, the granules of sand collide with each other and become frictionally charged, like a staticky sweater you just pulled out of the dryer. The same phenomenon happens on Earth, by the way, but the conditions on Titan's make the electrical forces develop much more strongly. In an experiment at Georgia Tech, researchers took grains of naphthalene and biphenyl (compounds believed to exist on Titan's surface) and put them in a pressure chamber recreating the moon's nitrogen-rich atmosphere. After about 20 minutes of shaking, the sand began to stick together, and about 2–5 percent of it was so electrically charged it wouldn't fall out of the tumbler. According to professor Josef Dudek, who co-led the study, If you grabbed piles of grains and built a sand castle on Titan, it would perhaps stay together for weeks due to their electrostatic properties.",
+      "tag": "Science & Technology"
+    },
+
+    {
+      "title": "Firehawk Raptors Are Predatory Birds That Start Forest Fires on Purpose",
+      "description": "Researchers have spotted black kites, whistling kites, and brown falcons all intentionally setting fires. And (surprise, surprise) all three are from the land of the deadliest wildlife on the planet: Australia. What happens is that any time a fire sparks in the plains or forests, the birds (collectively known as firehawk raptors) will gather to snag a burning branch or stick. They'll then fly up to an area where the fire has not yet spread, and drop their payload.Why? Basically, they're going on the bird-of-prey equivalent of a pheasant hunt. Hundreds of the birds will gather before one of these fires are set, and they will then collectively gorge themselves on the small rodents and reptiles that flee the inferno. This isn't an uncommon occurrence, either. Reports of firehawks seizing burning sticks out of human cooking fires or other pieces of smoldering vegetation go back for decades, and this most recent research easily turned up observations of the behavior. But in actuality, the records of firehawks goes back much, much longer.",
+      "tag": "Wildlife"
+    },
+
+    {
+      "title": "Cooking at Home Helps You Eat Healthier Even When You Dine Out",
+      "description": "In 2014, Johns Hopkins researchers Julia Wolfson and Sara Bleich published a study in the journal Public Health Nutrition looking at the effects of cooking at home on the overall quality of a person's diet. They examined two years of data from a national health and nutrition survey and found that people who cooked at home six to seven times per week ate significantly fewer calories overall than those who cooked one time or fewer per week — a difference of roughly 150 calories per day. Those who cooked at home most of the week also ate significantly fewer carbohydrates, less fat and sugar, and more fiber than those who didn't cook as much.Here's the most interesting part: on average, those who regularly cooked meals at home made healthier choices at all times, regardless of whether they stayed in or went out to eat. According to the study's press release, The researchers also found that those who cook at home more frequently rely less on frozen foods and are less likely to choose fast foods on the occasions when they eat out.",
+      "tag": "Food"
+    },
+
+    {
+      "title":"How to Set the Right Goals (and Actually Achieve Them!)",
+      "description": "Achieving goals can be difficult, but that may be because you're setting the wrong goals in the first place. That's why happiness expert and executive coach Stella Grizont returns to the Curiosity Podcast to discuss how to set the right goals and how to overcome the challenges of sticking to them. Stream or download the podcast using the player below or find the episode everywhere podcasts are found, including iTunes, Stitcher, and Gretta.",
+      "tag":"Life"
+    },
+
+    {
+      "title":"Are Math Equations Beautiful? Euler's Identity Makes Mathematicians Swoon",
+      "description":"Drumroll, please. Here is Euler's identity: eiπ + 1 = 0. Did that leave you breathless? Have you been swept off your feet? Are you sobbing tears of joy over its alluringly pure beauty? Okay, this may need an explanation. This equation has been renowned for its beauty for a few reasons. It comprises the five most important mathematical constants: 1 , 0 , pi (the number that defines a circle), e (the base of natural logarithms), and i (the most fundamental imaginary number).Euler's identity also contains the three basic mathematical operations: addition, multiplication, and exponentiation. Euler's identity is amazing because it is simple to look at and yet incredibly profound, Professor of Mathematics David Percy of the University of Salford in the UK told the BBC. What appeals to me is that this equality connects some incredibly complicated and seemingly unrelated concepts in a surprisingly concise form. As for what the equation actually does, it basically describes two equivalent ways to move in a circle.",
+      "tag":"Math"
+    }
+
+
+  ]
+}

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white_1000"
     android:orientation="vertical"
     tools:context="com.example.joker.sistofoodtest.FeedDetailActivity">
 
@@ -14,13 +15,13 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="250dp">
 
             <ImageView
                 android:id="@+id/detailImageView"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="fitXY"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/saturn" />
 
             <TextView
@@ -29,7 +30,7 @@
                 android:layout_height="200dp"
                 android:gravity="center"
                 android:textColor="@color/white_1000"
-                android:textSize="23sp"
+                android:textSize="26sp"
                 android:textStyle="bold" />
 
         </FrameLayout>
@@ -38,17 +39,29 @@
         <TextView
             android:id="@+id/shareTextView"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_height="35dp"
+            android:background="@color/pink_500"
             android:drawableEnd="@drawable/ic_share_black_24dp"
             android:drawableRight="@drawable/ic_share_black_24dp"
-            android:gravity="end"
-            android:letterSpacing=".5"
-            android:padding="5dp"
+            android:gravity="end|center_vertical"
+            android:letterSpacing=".2"
+            android:paddingEnd="5dp"
+            android:paddingRight="5dp"
             android:text="SHARE"
-            android:textColor="@color/black_1000" />
+            android:textColor="@color/white_1000" />
 
+        <TextView
+            android:id="@+id/tagTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:letterSpacing=".3"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Science"
+            android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+            android:textColor="@color/black_1000" />
 
         <TextView
             android:id="@+id/detailDescription"
@@ -56,11 +69,11 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="15dp"
-            android:lineSpacingExtra="3dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
+            android:lineSpacingExtra="4dp"
             android:textColor="@color/black_1000"
-            android:textSize="17sp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
 

@@ -2,6 +2,7 @@ package com.example.joker.sistofoodtest.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -78,6 +79,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
             playImageView = (ImageView) itemView.findViewById(R.id.playImage);
 
+            Typeface coustom_font_bold = Typeface.createFromAsset(context.getAssets(), "fonts/JosefinSansSemiBold.ttf");
+            title.setTypeface(coustom_font_bold);
+
         }
 
         public void bindData(final int position) {
@@ -86,6 +90,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             smallTitle.setText(feedModels.get(position).getSmallTitile());
             //likeTextView.setText(feedModels.get(position).getLike());
             dateTextView.setText(feedModels.get(position).getDate());
+
 
             if(position == 3 || position == 0){
                 playImageView.setVisibility(View.VISIBLE);

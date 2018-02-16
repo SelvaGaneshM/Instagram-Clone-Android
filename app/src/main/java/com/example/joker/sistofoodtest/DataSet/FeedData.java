@@ -1,6 +1,7 @@
 package com.example.joker.sistofoodtest.DataSet;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,11 +13,21 @@ import java.io.InputStream;
 public class FeedData {
 
 
-    public static String getJsonData(Context context) {
+    public static String getJsonData(Context context,int i) {
+
+        String file = null;
+        if(i==1){
+            file = "test.json";
+        }else if(i==2){
+            file = "detail.json";
+        }
+
+        Log.d("file ",file);
+
 
         String json = null;
         try {
-            InputStream is = context.getAssets().open("test.json");
+            InputStream is = context.getAssets().open(file);
 
             int size = is.available();
 
