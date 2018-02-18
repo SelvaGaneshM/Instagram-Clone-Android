@@ -1,18 +1,26 @@
 package com.example.joker.sistofoodtest.Fragment;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.GradientDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.example.joker.sistofoodtest.Adapter.HorizontalScrollAdapter;
 import com.example.joker.sistofoodtest.Adapter.RecyclerAdapter;
 import com.example.joker.sistofoodtest.DataSet.FeedData;
 import com.example.joker.sistofoodtest.Models.FeedModels;
 import com.example.joker.sistofoodtest.R;
+import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +35,8 @@ public class Home extends Fragment {
 
     private ArrayList<FeedModels> feeds = new ArrayList<>();
     private RecyclerView recyclerView;
+    private RecyclerAdapter recyclerAdapter;
+    private RecyclerView horizontalRecycler;
 
     public Home() {
     }
@@ -36,15 +46,41 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
-        init();
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(getContext(),getActivity(),feeds);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
+
+        SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        recyclerAdapter = new RecyclerAdapter(getContext(),getActivity(),feeds);
         recyclerView.setAdapter(recyclerAdapter);
+
+        horizontalRecycler = (RecyclerView) view.findViewById(R.id.horizontalScroll);
+        horizontalRecycler.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        horizontalRecycler.setAdapter(new HorizontalScrollAdapter(getContext()));
+
+        new AsyncFeed().execute();
 
         return view;
     }
 
+
+    @SuppressLint("StaticFieldLeak")
+    public class AsyncFeed extends AsyncTask<Void,Void,Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            init();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            recyclerAdapter.swapValues(feeds);
+
+        }
+    }
 
     private void init() {
 
@@ -58,13 +94,14 @@ public class Home extends Fragment {
 
                 JSONObject feed = jsonArray.getJSONObject(i);
 
+                String user = feed.getString("user");
                 String date = feed.getString("date");
                 String title = feed.getString("title");
                 String smallTitle = feed.getString("tag");
                 String imageUrl = feed.getString("imageUrl");
                 String like = feed.getString("like");
 
-                feeds.add(new FeedModels(date,title,smallTitle,imageUrl,like));
+                feeds.add(new FeedModels(user,date,title,smallTitle,imageUrl,like));
             }
 
         }catch (Exception e){

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.joker.sistofoodtest.Models.StatusModel;
+import com.example.joker.sistofoodtest.Models.FollowingModel;
 import com.example.joker.sistofoodtest.R;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class User extends Fragment {
 
-    private ArrayList<StatusModel> status = new ArrayList<>();
+    private ArrayList<FollowingModel> status = new ArrayList<>();
 
     public User() {
     }

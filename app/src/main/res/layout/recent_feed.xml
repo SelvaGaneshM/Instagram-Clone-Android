@@ -4,25 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardViewContainer"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="8dp"
     android:layout_marginEnd="5dp"
     android:layout_marginStart="5dp"
-    android:layout_marginTop="10dp"
-    android:background="@color/white_1000"
-    android:paddingBottom="5dp"
-    app:cardCornerRadius="1dp"
-    app:cardElevation="7dp">
+    android:layout_marginTop="5dp"
+    android:background="@color/grey_300">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="inoov_abhay"
+            android:padding="5dp"
+            android:id="@+id/userNameTextView"
+            android:textColor="@color/black_1000"
+            android:textStyle="bold"
+            android:drawableEnd="@drawable/ic_more_vert_black_24dp"
+            android:drawableRight="@drawable/ic_more_vert_black_24dp"/>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:padding="5dp">
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -43,7 +52,7 @@
                 android:id="@+id/typeTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top|start"
                 android:background="@color/yellow_600"
                 android:gravity="start"
                 android:padding="3dp"
@@ -52,26 +61,25 @@
                 android:textStyle="bold"
                 tools:text="This is my detail" />
 
+            <TextView
+                android:id="@+id/titileTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="start"
+                android:background="#4D000000"
+                android:padding="5dp"
+                android:textColor="@color/white_1000"
+                android:textSize="18sp"
+                tools:text="This is me Shirom" />
+
         </FrameLayout>
 
-        <TextView
-            android:id="@+id/titileTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:drawableEnd="@drawable/ic_more_vert_black_24dp"
-            android:drawableRight="@drawable/ic_more_vert_black_24dp"
-            android:gravity="start"
-            android:background="?attr/selectableItemBackground"
-            android:padding="5dp"
-            android:textColor="@color/black_1000"
-            android:textSize="18sp"
-            tools:text="This is me Shirom" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:orientation="horizontal">
 
             <TextView
@@ -79,10 +87,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="9"
+                android:textColor="@color/grey_600"
                 android:gravity="center_vertical|start"
                 android:paddingLeft="5dp"
                 android:paddingStart="5dp"
                 android:text="Today" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="2dp"
+                android:layout_marginRight="2dp"
+                android:text="120"
+                android:gravity="center_vertical|center_horizontal"
+                android:letterSpacing=".08"
+                android:padding="1dp" />
 
             <TextView
                 android:id="@+id/likeTextView"
@@ -91,6 +110,19 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginRight="15dp"
                 android:drawableRight="@drawable/ic_thumb_up_black_24dp"
+                android:gravity="center_vertical|center_horizontal"
+                android:letterSpacing=".08"
+                android:paddingEnd="3dp"
+                android:padding="5dp"
+                android:paddingRight="3dp" />
+
+            <TextView
+                android:id="@+id/commentDrawable"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:drawableRight="@drawable/ic_mode_comment_black_24dp"
                 android:gravity="center_vertical|center_horizontal"
                 android:letterSpacing=".08"
                 android:paddingEnd="3dp"

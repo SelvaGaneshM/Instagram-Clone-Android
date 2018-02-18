@@ -1,9 +1,15 @@
 package com.example.joker.sistofoodtest;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,7 +17,9 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.joker.sistofoodtest.Adapter.ViewpagerAdapter;
 
@@ -23,12 +31,16 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     private TextView notificationBar;
     private ImageView addBtn;
 
+    public static final int MY_CAMERA_REQUEST_CODE  = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+        disableSwipe();
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         notificationBar = (TextView) findViewById(R.id.notificationBar);
         addBtn = (ImageView) findViewById(R.id.addBtn);
@@ -36,14 +48,28 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(adapter);
 
-        //method to set BottomNavigation and disable ViewPager swipe action
+        //method to set BottomNavigation
         init();
-
-
 
     }
 
-    //method to set BottomNavigation and disable ViewPager swipe action
+    @SuppressLint("ClickableViewAccessibility")
+    private void disableSwipe() {
+        //override viewpager to disabel its swipe.
+        viewPager.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+
+
+
+        });
+
+    }
+
+    //method to set BottomNavigation
     private void init() {
         //bottom navigation for viewpager swipe
         bottomNavigationView.setOnNavigationItemSelectedListener(
@@ -69,16 +95,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                         return true;
                     }
                 });
-
-
-        //override viewpager to disabel its swipe.
-        viewPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
-
     }
 
     @Override
@@ -91,8 +107,47 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     public void startCamera(View view) {
 
-        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-        startActivity(intent);
+        if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CAMERA},MY_CAMERA_REQUEST_CODE);
+
+        }else{
+
+            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+            startActivity(intent);
+
+        }
+
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+
+        switch (requestCode) {
+            case MY_CAMERA_REQUEST_CODE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    Toast.makeText(this,"Starting Camera",Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request.
+        }
+
 
     }
 }

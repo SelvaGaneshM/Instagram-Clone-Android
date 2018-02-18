@@ -6,13 +6,15 @@ package com.example.joker.sistofoodtest.Models;
 
 public class FeedModels {
 
+    private String user;
     private String date;
     private String titile;
     private String smallTitile;
     private String imageUrl;
     private String like;
 
-    public FeedModels(String date, String titile, String smallTitile, String imageUrl,String like) {
+    public FeedModels(String user, String date, String titile, String smallTitile, String imageUrl,String like) {
+        this.user = user;
         this.date = date;
         this.titile = titile;
         this.smallTitile = smallTitile;

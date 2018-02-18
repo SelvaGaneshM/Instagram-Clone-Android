@@ -59,6 +59,16 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return feedModels == null ? 0 : feedModels.size();
     }
 
+    public void swapValues(ArrayList<FeedModels> feeds) {
+
+        if(feeds != null && feeds != feedModels){
+            feedModels = feeds;
+        }
+
+        notifyDataSetChanged();
+
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title,smallTitle,shareTextView,likeTextView,dateTextView;

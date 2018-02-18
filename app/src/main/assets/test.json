@@ -2,7 +2,8 @@
  "status":"ok",
   "feeds":[
     {
-      "date":"Today",
+      "user":"innov_abhay",
+      "date":"12m ago",
       "title":"This is a picture of a single strontium atom",
       "tag":"Science & Tech.",
       "imageUrl":"http://assets3.bigthink.com/system/idea_thumbnails/64540/size_1024/atom_lead_image.jpg?1518539654",
@@ -10,7 +11,8 @@
     },
 
     {
-      "date":"Yesterday",
+      "user":"innov_abhay",
+      "date":"54m ago",
       "title":"Saturn's Moon Titan Is Covered in Electrified Sand",
       "tag":"Astronomy",
       "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr5j4jdnZ7o65f43YZCfd_hheFWy7HIbXi6T6l3-1QL1PhBIyg3w",
@@ -18,7 +20,8 @@
     },
 
     {
-      "date":"Today",
+      "user":"innov_abhay",
+      "date":"1hr ago",
       "title":"Firehawk Raptors Are Predatory Birds That Start Forest Fires on Purpose",
       "tag":"Wildlife",
       "imageUrl":"http://d3lp4xedbqa8a5.cloudfront.net/s3/digital-cougar-assets/AusGeo/2018/01/11/66718/firehawks.jpg",
@@ -26,7 +29,8 @@
     },
 
     {
-      "date":"Yesterday",
+      "user":"innov_abhay",
+      "date":"3hr ago",
       "title":"Cooking at Home Helps You Eat Healthier Even When You Dine Out",
       "tag":"Food",
       "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPUDn57Rwny6BSYUKfXfU_LVi5NfZ72yKlAnrh5qOstlgMBKJC",
@@ -34,14 +38,16 @@
     },
 
     {
-      "date":"Today",
+      "user":"innov_abhay",
+      "date":"1d ago",
       "title":"How to Set the Right Goals (and Actually Achieve Them!)",
       "tag":"Life",
       "imageUrl":"http://honeybeejoyous.com/wp-content/uploads/2017/07/12.27.2015-How-to-set-awesome-goals-in-5-simple-steps-PINTEREST.png",
       "like":"63"
     },
     {
-      "date":"Yesterday",
+      "user":"innov_abhay",
+      "date":"1w ago",
       "title":"Are Math Equations Beautiful?",
       "tag":"Math",
       "imageUrl":"https://dw8stlw9qt0iz.cloudfront.net/OgsSPGPyxq2zJMO93ZKA37AYeJs=/fit-in/800x450/filters:format(jpeg):quality(75)/curiosity-data.s3.amazonaws.com/images/content/landscape/standard/894fb00b-59b8-4f72-b91b-4a5a69b02165.jpg",
