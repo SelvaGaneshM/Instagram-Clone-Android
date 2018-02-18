@@ -42,7 +42,7 @@ public class FeedDetailActivity extends AppCompatActivity {
         Typeface coustom_font_bold = Typeface.createFromAsset(this.getAssets(), "fonts/JosefinSansSemiBold.ttf");
 
         titleTextView.setTypeface(coustom_font_bold);
-        descriptionTextView.setTypeface(coustom_font);
+        descriptionTextView.setTypeface(coustom_font_bold);
 
 
         titleTextView.setText(feeds.get(dataPosition).getTitle());

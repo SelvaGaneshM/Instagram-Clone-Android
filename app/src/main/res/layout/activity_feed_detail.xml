@@ -28,8 +28,10 @@
             <TextView
                 android:id="@+id/detailTitile"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:gravity="center"
+                android:background="#4d000000"
                 android:textColor="@color/white_1000"
                 android:textSize="26sp"
                 android:textStyle="bold" />
@@ -40,27 +42,33 @@
         <TextView
             android:id="@+id/shareTextView"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:background="@color/pink_500"
-            android:drawableEnd="@drawable/ic_share_black_24dp"
-            android:drawableRight="@drawable/ic_share_black_24dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:drawableStart="@drawable/ic_thumb_up_white_24dp"
+            android:paddingStart="10dp"
+            android:drawableEnd="@drawable/ic_share_white_24dp"
+            android:drawableRight="@drawable/ic_share_white_24dp"
             android:gravity="end|center_vertical"
             android:letterSpacing=".2"
-            android:paddingEnd="5dp"
-            android:paddingRight="5dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
             android:text="SHARE"
-            android:textColor="@color/white_1000" />
+            android:textColor="@color/white_1000"
+            android:drawableLeft="@drawable/ic_thumb_up_black_24dp" />
 
         <TextView
             android:id="@+id/tagTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:letterSpacing=".3"
+            android:letterSpacing=".1"
             android:paddingLeft="15dp"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Science"
+            android:textSize="20sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
             android:textColor="@color/black_1000" />
 
@@ -74,7 +82,7 @@
             android:layout_marginTop="15dp"
             android:lineSpacingExtra="4dp"
             android:textColor="@color/black_1000"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
     </LinearLayout>
 

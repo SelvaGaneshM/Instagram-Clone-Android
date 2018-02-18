@@ -26,10 +26,10 @@ import com.example.joker.sistofoodtest.Adapter.ViewpagerAdapter;
 public class MainActivity extends AppCompatActivity implements ClickListener {
 
 
-    private ViewPager viewPager;
+    private CustomViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
     private TextView notificationBar;
-    private ImageView addBtn;
+    private ImageView addBtn,editBtn;
 
     public static final int MY_CAMERA_REQUEST_CODE  = 100;
 
@@ -38,34 +38,19 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        disableSwipe();
+        viewPager = findViewById(R.id.viewpager);
+        viewPager.setPagingEnabled(false);
 
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
-        notificationBar = (TextView) findViewById(R.id.notificationBar);
-        addBtn = (ImageView) findViewById(R.id.addBtn);
+        bottomNavigationView = findViewById(R.id.navigation);
+        notificationBar = findViewById(R.id.notificationBar);
+        addBtn = findViewById(R.id.addBtn);
+        editBtn = findViewById(R.id.editBtn);
 
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(adapter);
 
         //method to set BottomNavigation
         init();
-
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private void disableSwipe() {
-        //override viewpager to disabel its swipe.
-        viewPager.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-
-
-
-        });
 
     }
 
@@ -120,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
 
     }
 
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -135,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
                     // permission was granted, yay! Do the
                     // contacts-related task you need to do.
                     Toast.makeText(this,"Starting Camera",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+                    startActivity(intent);
 
                 } else {
 
@@ -148,6 +134,12 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
             // permissions this app might request.
         }
 
+
+    }
+
+    public void newArticle(View view) {
+
+        startActivity(new Intent(MainActivity.this,ArticleActivity.class));
 
     }
 }

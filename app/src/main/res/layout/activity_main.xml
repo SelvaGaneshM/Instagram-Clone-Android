@@ -17,6 +17,19 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/editBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="10dp"
+            android:onClick="newArticle"
+            android:padding="2dp"
+            app:srcCompat="@drawable/ic_mode_edit_black_24dp" />
+
         <TextView
             android:id="@+id/notificationBar"
             android:layout_width="0dp"
@@ -24,8 +37,6 @@
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:layout_weight="9"
-            android:drawableLeft="@drawable/ic_menu_black_24dp"
-            android:drawableStart="@drawable/ic_menu_black_24dp"
             android:gravity="center_horizontal|center_vertical"
             android:text="Feeds"
             android:textColor="@color/black_1000"
@@ -50,7 +61,7 @@
         android:layout_below="@id/topNavigation"
         android:orientation="vertical">
 
-        <android.support.v4.view.ViewPager
+        <com.example.joker.sistofoodtest.CustomViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
