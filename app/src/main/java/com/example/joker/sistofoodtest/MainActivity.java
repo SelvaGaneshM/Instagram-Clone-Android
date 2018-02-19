@@ -90,6 +90,15 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         startActivity(intent);
     }
 
+    @Override
+    public void StoryClickListener(int a) {
+
+        Intent intent = new Intent(this,HorizontalStoryActivity.class);
+        intent.putExtra("position",a);
+        startActivity(intent);
+
+    }
+
     public void startCamera(View view) {
 
         if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){

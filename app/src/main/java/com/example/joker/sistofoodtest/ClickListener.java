@@ -8,4 +8,6 @@ public interface ClickListener {
 
     public void DrawerClickListerner(int a);
 
+    public void StoryClickListener(int a);
+
 }

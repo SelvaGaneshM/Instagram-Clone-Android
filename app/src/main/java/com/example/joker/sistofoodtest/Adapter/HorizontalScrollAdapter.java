@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.joker.sistofoodtest.ClickListener;
 import com.example.joker.sistofoodtest.R;
 
 /**
@@ -18,9 +19,11 @@ public class HorizontalScrollAdapter extends RecyclerView.Adapter<HorizontalScro
 
 
     private Context context;
+    private ClickListener clickListener;
 
     public HorizontalScrollAdapter(Context context) {
         this.context = context;
+        clickListener = (ClickListener) context;
     }
 
     @Override
@@ -46,10 +49,10 @@ public class HorizontalScrollAdapter extends RecyclerView.Adapter<HorizontalScro
 
         public ViewHolder(View itemView) {
             super(itemView);
-            imageView = (ImageView) itemView.findViewById(R.id.storiesImageVeiw);
+            imageView = itemView.findViewById(R.id.storiesImageVeiw);
         }
 
-        public void bindData(int position) {
+        public void bindData(final int position) {
 
             switch (position) {
                 case 0:
@@ -71,10 +74,14 @@ public class HorizontalScrollAdapter extends RecyclerView.Adapter<HorizontalScro
                 case 4:
                     Glide.with(context).load(R.drawable.food).into(imageView);
                     break;
-
-
-
             }
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.StoryClickListener(position);
+                }
+            });
 
         }
     }
