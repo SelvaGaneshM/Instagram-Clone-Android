@@ -46,18 +46,15 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,false));
 
-        SnapHelper snapHelper = new GravitySnapHelper(Gravity.START);
-        snapHelper.attachToRecyclerView(recyclerView);
+
+        //feed list
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         recyclerAdapter = new RecyclerAdapter(getContext(),getActivity(),feeds);
         recyclerView.setAdapter(recyclerAdapter);
-
-        horizontalRecycler = (RecyclerView) view.findViewById(R.id.horizontalScroll);
-        horizontalRecycler.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        horizontalRecycler.setAdapter(new HorizontalScrollAdapter(getContext()));
 
         new AsyncFeed().execute();
 

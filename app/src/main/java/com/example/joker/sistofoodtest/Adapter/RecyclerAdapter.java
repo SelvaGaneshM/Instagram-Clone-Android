@@ -73,7 +73,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         private TextView title,smallTitle,shareTextView,likeTextView,dateTextView;
         private CardView cardView;
-        private ImageView imageView,playImageView;
+        private ImageView imageView;
 
 
 
@@ -87,7 +87,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             likeTextView = (TextView) itemView.findViewById(R.id.likeTextView);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);
             dateTextView = (TextView) itemView.findViewById(R.id.dateTextView);
-            playImageView = (ImageView) itemView.findViewById(R.id.playImage);
 
             Typeface coustom_font_bold = Typeface.createFromAsset(context.getAssets(), "fonts/JosefinSansSemiBold.ttf");
             title.setTypeface(coustom_font_bold);
@@ -100,11 +99,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             smallTitle.setText(feedModels.get(position).getSmallTitile());
             //likeTextView.setText(feedModels.get(position).getLike());
             dateTextView.setText(feedModels.get(position).getDate());
-
-
-            if(position == 3 || position == 0){
-                playImageView.setVisibility(View.VISIBLE);
-            }
 
             switch (position){
                 case 0 :

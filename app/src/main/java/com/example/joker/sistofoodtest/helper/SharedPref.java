@@ -7,6 +7,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.gson.Gson;
 import  com.example.joker.sistofoodtest.Models.User;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SharedPref {
 
     private static SharedPref sharedPref = null;
@@ -30,7 +33,8 @@ public class SharedPref {
 
         SharedPreferences.Editor editor = sharedPreference.edit();
 
-        User user = new User(firebaseUser.getUid(), firebaseUser.getDisplayName(), firebaseUser.getEmail(), firebaseUser.getPhotoUrl().toString());
+        List<String> names = new ArrayList<>();
+        User user = new User(firebaseUser.getUid(), firebaseUser.getDisplayName(), firebaseUser.getEmail(), firebaseUser.getPhotoUrl().toString(), names);
         Gson gson = new Gson();
         String json = gson.toJson(user);
         editor.putString(USER, json);

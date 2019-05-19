@@ -36,25 +36,27 @@ public class SplashActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.logoImageView);
         Glide.with(this).load(R.drawable.instagram_log).into(imageView);
 
-        final FirebaseAuth auth = FirebaseHelper.getFirebaseAuth();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (auth.getCurrentUser() == null) {
-                    // Create and launch sign-in intent
-                    startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers).build(), RC_SIGN_IN);
+        FirebaseAuth auth = FirebaseHelper.getFirebaseAuth();
+        if (auth.getCurrentUser() == null) {
+            // Create and launch sign-in intent
+            startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setAvailableProviders(providers).build(), RC_SIGN_IN);
 
-                } else {
-                    gotoMainActivity();
-                }
-            }
-        }, 1500);
+        } else {
+            gotoMainActivity();
+        }
+
 
     }
 
     private void gotoMainActivity() {
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
-        finish();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                FirebaseHelper.saveUser(getApplicationContext());
+                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                finish();
+            }
+        }, 1500);
     }
 
     @Override
@@ -69,7 +71,6 @@ public class SplashActivity extends AppCompatActivity {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 SharedPref.getInstance(getApplicationContext()).saveUser(user);
-                FirebaseHelper.saveUser(getApplicationContext());
                 gotoMainActivity();
 
             } else {

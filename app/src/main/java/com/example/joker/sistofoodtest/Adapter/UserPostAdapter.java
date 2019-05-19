@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.joker.sistofoodtest.R;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Created by joker on 19/2/18.
  */
@@ -22,14 +24,15 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ViewHo
         this.context = context;
     }
 
+    @NotNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_post_listitem,parent,false);
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NotNull ViewHolder holder, int position) {
         holder.bindData(position);
     }
 

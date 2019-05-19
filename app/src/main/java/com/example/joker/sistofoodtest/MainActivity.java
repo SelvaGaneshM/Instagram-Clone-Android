@@ -22,6 +22,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.joker.sistofoodtest.Adapter.ViewpagerAdapter;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity implements ClickListener {
 
@@ -29,9 +32,9 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     private CustomViewPager viewPager;
     private BottomNavigationView bottomNavigationView;
     private TextView notificationBar;
-    private ImageView addBtn,editBtn;
+    private ImageView addBtn, logoutBtn;
 
-    public static final int MY_CAMERA_REQUEST_CODE  = 100;
+    public static final int MY_CAMERA_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
         bottomNavigationView = findViewById(R.id.navigation);
         notificationBar = findViewById(R.id.notificationBar);
         addBtn = findViewById(R.id.addBtn);
-        editBtn = findViewById(R.id.editBtn);
+        logoutBtn = findViewById(R.id.logoutBtn);
 
         ViewpagerAdapter adapter = new ViewpagerAdapter(getSupportFragmentManager(), this);
         viewPager.setAdapter(adapter);
@@ -57,98 +60,62 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     //method to set BottomNavigation
     private void init() {
         //bottom navigation for viewpager swipe
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.navigation_home:
-                                viewPager.setCurrentItem(0);
-                                notificationBar.setText("Feeds");
-                                break;
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        viewPager.setCurrentItem(0);
+                        notificationBar.setText("Feeds");
+                        break;
 
-                            case R.id.status:
-                                viewPager.setCurrentItem(1);
-                                notificationBar.setText("Status");
-                                break;
+                    case R.id.status:
+                        viewPager.setCurrentItem(1);
+                        notificationBar.setText("Status");
+                        break;
 
-                            case R.id.user:
-                                viewPager.setCurrentItem(2);
-                                notificationBar.setText("Me");
-                                break;
-                        }
-                        return true;
-                    }
-                });
+                    case R.id.user:
+                        viewPager.setCurrentItem(2);
+                        notificationBar.setText("Me");
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
     public void DrawerClickListerner(int position) {
-        Intent intent = new Intent(this,FeedDetailActivity.class);
-        intent.putExtra("feedno",position);
-        Log.d("Feed No Mainactivity ",""+position);
+        Intent intent = new Intent(this, FeedDetailActivity.class);
+        intent.putExtra("feedno", position);
+        Log.d("Feed No Mainactivity ", "" + position);
         startActivity(intent);
     }
 
+
+    //TODO remove this story part from the applicaton
     @Override
     public void StoryClickListener(int a) {
 
-        Intent intent = new Intent(this,HorizontalStoryActivity.class);
-        intent.putExtra("position",a);
+        Intent intent = new Intent(this, HorizontalStoryActivity.class);
+        intent.putExtra("position", a);
         startActivity(intent);
 
     }
 
-    public void startCamera(View view) {
-
-        if(ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
-
-            ActivityCompat.requestPermissions(MainActivity.this,new String[]{Manifest.permission.CAMERA},MY_CAMERA_REQUEST_CODE);
-
-        }else{
-
-            Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-            startActivity(intent);
-
-        }
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-
-        switch (requestCode) {
-            case MY_CAMERA_REQUEST_CODE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                    Toast.makeText(this,"Starting Camera",Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
-                    startActivity(intent);
-
-                } else {
-
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                    Toast.makeText(this,"Permission Denied",Toast.LENGTH_SHORT).show();
-                }
+    public void logout(View view) {
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(MainActivity.this, "Logout successful", Toast.LENGTH_SHORT).show();
+                finish();
             }
-
-            // other 'case' lines to check for other
-            // permissions this app might request.
-        }
-
+        });
 
     }
 
     public void newArticle(View view) {
 
-        startActivity(new Intent(MainActivity.this,ArticleActivity.class));
+        startActivity(new Intent(MainActivity.this, ArticleActivity.class));
 
     }
 }

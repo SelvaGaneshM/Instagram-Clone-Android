@@ -1,6 +1,8 @@
 package com.example.joker.sistofoodtest.Models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User implements Serializable {
 
@@ -8,15 +10,18 @@ public class User implements Serializable {
     private String userName = "";
     private String userEmail = "";
     private String userImage = "";
+    private List<String> userPosts = new ArrayList<>();
 
     public User(){}
 
-    public User(String userId, String userName, String userEmail, String userImage) {
+    public User(String userId, String userName, String userEmail, String userImage, List<String> userPosts) {
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
         this.userImage = userImage;
+        this.userPosts = userPosts;
     }
+
 
     public String getUserId() {
         return userId;
@@ -32,5 +37,9 @@ public class User implements Serializable {
 
     public String getUserImage() {
         return userImage;
+    }
+
+    public List<String> getUserPosts() {
+        return userPosts;
     }
 }
