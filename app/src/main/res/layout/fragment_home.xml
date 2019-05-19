@@ -5,12 +5,27 @@
     android:layout_height="match_parent"
     android:background="@color/white_1000">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white_1000"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="match_parent">
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white_1000" />
+
+        <TextView
+            android:id="@+id/loadingTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Please wait..."
+            android:textColor="@color/grey_800"
+            android:textSize="26sp" />
+
+    </FrameLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

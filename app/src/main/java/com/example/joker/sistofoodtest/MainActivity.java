@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity implements ClickListener {
     private TextView notificationBar;
     private ImageView addBtn, logoutBtn;
 
-    public static final int MY_CAMERA_REQUEST_CODE = 100;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

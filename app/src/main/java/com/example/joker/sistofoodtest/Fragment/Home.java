@@ -1,9 +1,11 @@
 package com.example.joker.sistofoodtest.Fragment;
 
 import android.annotation.SuppressLint;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,13 +16,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.joker.sistofoodtest.Adapter.HorizontalScrollAdapter;
 import com.example.joker.sistofoodtest.Adapter.RecyclerAdapter;
 import com.example.joker.sistofoodtest.DataSet.FeedData;
+import com.example.joker.sistofoodtest.MainActivity;
 import com.example.joker.sistofoodtest.Models.FeedModels;
+import com.example.joker.sistofoodtest.Models.Post;
 import com.example.joker.sistofoodtest.R;
+import com.example.joker.sistofoodtest.helper.FirebaseHelper;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper;
+import com.google.firebase.database.Query;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,10 +43,8 @@ import java.util.ArrayList;
 
 public class Home extends Fragment {
 
-    private ArrayList<FeedModels> feeds = new ArrayList<>();
     private RecyclerView recyclerView;
-    private RecyclerAdapter recyclerAdapter;
-    private RecyclerView horizontalRecycler;
+    private TextView loadingTV;
 
     public Home() {
     }
@@ -44,69 +52,51 @@ public class Home extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
 
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-        //feed list
+        loadingTV = view.findViewById(R.id.loadingTV);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        Query query = FirebaseHelper.getPostRef();
+        FirebaseRecyclerOptions<Post> options = new FirebaseRecyclerOptions.Builder<Post>().setQuery(query, Post.class).setLifecycleOwner(this).build();
 
-        recyclerAdapter = new RecyclerAdapter(getContext(),getActivity(),feeds);
-        recyclerView.setAdapter(recyclerAdapter);
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Post, PostHolder>(options) {
 
-        new AsyncFeed().execute();
-
-        return view;
-    }
-
-
-    @SuppressLint("StaticFieldLeak")
-    public class AsyncFeed extends AsyncTask<Void,Void,Void>{
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            init();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            recyclerAdapter.swapValues(feeds);
-
-        }
-    }
-
-    private void init() {
-
-        String jsonData = FeedData.getJsonData(getContext(),1);
-
-        try {
-
-            JSONObject jsonFeeds = new JSONObject(jsonData);
-            JSONArray jsonArray =  jsonFeeds.getJSONArray("feeds");
-            for(int i=0 ; i<jsonArray.length(); i++){
-
-                JSONObject feed = jsonArray.getJSONObject(i);
-
-                String user = feed.getString("user");
-                String date = feed.getString("date");
-                String title = feed.getString("title");
-                String smallTitle = feed.getString("tag");
-                String imageUrl = feed.getString("imageUrl");
-                String like = feed.getString("like");
-
-                feeds.add(new FeedModels(user,date,title,smallTitle,imageUrl,like));
+            @NonNull
+            @Override
+            public PostHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+                View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recent_feed, viewGroup, false);
+                return new PostHolder(v);
             }
 
-        }catch (Exception e){
+            @Override
+            protected void onBindViewHolder(@NonNull PostHolder holder, int position, @NonNull Post model) {
 
-            e.printStackTrace();
+                if(loadingTV.getVisibility() == View.VISIBLE){
+                    loadingTV.setVisibility(View.GONE);
+                }
 
-        }
 
+                Glide.with(getContext()).load(model.getUser().getUserImage()).thumbnail(0.1f).into(holder.logoView);
+
+                holder.userName.setText(model.getUser().getUserName());
+
+                holder.postTime.setText(FirebaseHelper.getTime(model.getUploadTimestamp()));
+
+                Glide.with(getContext()).load(model.getImageUrl()).thumbnail(0.1f).into(holder.postImageView);
+
+                holder.userCaption.setText(model.getCaption());
+                Typeface coustom_font_bold = Typeface.createFromAsset(getContext().getAssets(), "fonts/JosefinSansSemiBold.ttf");
+                holder.userCaption.setTypeface(coustom_font_bold);
+
+            }
+        };
+
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 
 }
