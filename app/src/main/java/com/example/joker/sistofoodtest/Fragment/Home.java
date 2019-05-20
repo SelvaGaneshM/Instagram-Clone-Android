@@ -81,7 +81,10 @@ public class Home extends Fragment {
 
                 Glide.with(getContext()).load(model.getUser().getUserImage()).thumbnail(0.1f).into(holder.logoView);
 
-                holder.userName.setText(model.getUser().getUserName());
+                String userName = model.getUser().getUserName();
+                userName = userName.replaceAll(" ", "_").toLowerCase();
+
+                holder.userName.setText(userName);
 
                 holder.postTime.setText(FirebaseHelper.getTime(model.getUploadTimestamp()));
 

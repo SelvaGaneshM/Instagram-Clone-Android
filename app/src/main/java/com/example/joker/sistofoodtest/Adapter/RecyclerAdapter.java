@@ -82,7 +82,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             cardView = (CardView) itemView.findViewById(R.id.cardViewContainer);
             title = (TextView) itemView.findViewById(R.id.titileTextView);
-            smallTitle = (TextView) itemView.findViewById(R.id.typeTextView);
             shareTextView = (TextView) itemView.findViewById(R.id.shareTextView);
             likeTextView = (TextView) itemView.findViewById(R.id.likeTextView);
             imageView = (ImageView) itemView.findViewById(R.id.imageView);

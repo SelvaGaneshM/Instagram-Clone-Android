@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="4dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="4dp"
     android:layout_marginBottom="8dp"
     android:background="@color/grey_300">
@@ -27,7 +27,7 @@
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_margin="4dp"
-                android:src="@color/grey_400"/>
+                android:src="@color/grey_400" />
 
             <TextView
                 android:id="@+id/userNameTextView"
@@ -43,8 +43,8 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:background="@color/grey_800"
+            android:layout_height="420dp"
+            android:background="@color/grey_200"
             android:paddingStart="0dp"
             android:paddingEnd="0dp">
 
@@ -53,40 +53,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:minWidth="350dp"
+                android:minWidth="390dp"
                 android:scaleType="fitCenter" />
-
-            <TextView
-                android:id="@+id/typeTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top|start"
-                android:background="@color/yellow_600"
-                android:gravity="start"
-                android:padding="3dp"
-                android:textColor="@color/black_1000"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                tools:text="This is my detail" />
-
-            <TextView
-                android:id="@+id/titileTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="#4D000000"
-                android:gravity="start"
-                android:padding="5dp"
-                android:textColor="@color/white_1000"
-                android:textSize="18sp"
-                tools:text="This is me Shirom" />
 
         </FrameLayout>
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -99,7 +74,8 @@
                 android:paddingStart="5dp"
                 android:paddingLeft="5dp"
                 android:text="Today"
-                android:textColor="@color/grey_400"
+                android:textColor="@color/grey_900"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -111,7 +87,8 @@
                 android:letterSpacing=".08"
                 android:padding="1dp"
                 android:text="120"
-                android:textColor="@color/grey_400"
+                android:textColor="@color/grey_900"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -122,7 +99,6 @@
                 android:layout_marginRight="15dp"
                 android:drawableStart="@drawable/ic_thumb_up_black_24dp"
                 android:drawableLeft="@drawable/ic_thumb_up_black_24dp"
-                android:gravity="center_vertical|center_horizontal"
                 android:letterSpacing=".08"
                 android:padding="5dp"
                 android:paddingEnd="3dp"
@@ -134,8 +110,7 @@
                 android:layout_height="22dp"
                 android:layout_marginRight="10dp"
                 android:drawableStart="@drawable/ic_mode_comment_black_24dp"
-                android:drawableLeft="@drawable/ic_mode_comment_black_24dp"
-                android:gravity="center_vertical|center_horizontal" />
+                android:drawableLeft="@drawable/ic_mode_comment_black_24dp" />
 
             <View
                 android:layout_width="1dp"
@@ -150,10 +125,20 @@
                 android:layout_marginRight="15dp"
                 android:drawableStart="@drawable/ic_share_black_24dp"
                 android:drawableLeft="@drawable/ic_share_black_24dp"
-                android:gravity="center_vertical|center_horizontal"
                 android:textColor="@color/white_1000"
                 android:textSize="20sp" />
         </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/titileTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:gravity="start"
+            android:textColor="@color/black_1000"
+            android:textSize="16sp"
+            tools:text="This is me Shirom" />
 
 
     </LinearLayout>
