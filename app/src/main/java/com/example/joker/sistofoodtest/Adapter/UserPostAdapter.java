@@ -6,11 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 
 import com.bumptech.glide.Glide;
 import com.example.joker.sistofoodtest.R;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by joker on 19/2/18.
@@ -19,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ViewHolder> {
 
     private Context context;
+    private List<String> posts = new ArrayList<>();
 
     public UserPostAdapter(Context context) {
         this.context = context;
@@ -27,7 +32,7 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ViewHo
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_post_listitem,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_post_listitem, parent, false);
         return new ViewHolder(v);
     }
 
@@ -38,7 +43,13 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return 8;
+        return posts == null ? 0 : posts.size();
+    }
+
+    public void add(String imageUrl) {
+        int posititon = posts.size() - 1;
+        posts.add(imageUrl);
+        notifyItemInserted(posititon);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -53,32 +64,8 @@ public class UserPostAdapter extends RecyclerView.Adapter<UserPostAdapter.ViewHo
 
         public void bindData(int position) {
 
-            switch (position){
-                case 0:
-                    Glide.with(context).load(R.drawable.saturn).into(imageView);
-                    break;
-                case 1:
-                    Glide.with(context).load(R.drawable.man).into(imageView);
-                    break;
-                case 2:
-                    Glide.with(context).load(R.drawable.manage).into(imageView);
-                    break;
-                case 3:
-                    Glide.with(context).load(R.drawable.hawk).into(imageView);
-                    break;
-                case 4:
-                    Glide.with(context).load(R.drawable.goals).into(imageView);
-                    break;
-                case 5:
-                    Glide.with(context).load(R.drawable.girl).into(imageView);
-                    break;
-                case 6:
-                    Glide.with(context).load(R.drawable.atom).into(imageView);
-                    break;
-                case 7:
-                    Glide.with(context).load(R.drawable.eular).into(imageView);
-                    break;
-            }
+            Glide.with(context).load(posts.get(position)).into(imageView);
+
 
         }
     }
